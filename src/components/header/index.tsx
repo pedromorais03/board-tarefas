@@ -14,10 +14,13 @@ export function Header(){
                      Tarefas<span>+</span>
                   </h1>
                </Link>
-               <Link href="/dashboard" className={styles.dashboard}>Meu painel</Link>
+               { session?.user && (
+                  <Link href="/dashboard" className={styles.dashboard}>Meu painel</Link>
+               ) }
+              
             </nav>
 
-            {status === 'loading' ? (
+            { status === 'loading' ? (
                <></>
             ) : session ? (
                <button className={styles.loginButton} onClick={() => signOut()}>
@@ -27,7 +30,7 @@ export function Header(){
                <button className={styles.loginButton} onClick={() => signIn("google")}>
                   Acessar
                </button>
-            )}
+            ) }
 
             
          </section>
